@@ -15,24 +15,27 @@ O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso d
 ## 🛠️ Etapas do Desenvolvimento
 
 1. **Escolha do paradigma de IA**:
-   - A abordagem escolhida foi o **Conexionismo**, com a utilização de redes neurais para o reconhecimento dos números no Sudoku e resolução do jogo.
+   - A abordagem escolhida foi o **Conexionismo**, com a utilização de redes neurais para o reconhecimento dos números na grade do Sudoku.
 
 2. **Criação/seleção de Dataset**:
-   - Foi utilizado um dataset de imagens contendo grades de Sudoku, onde os números nas células foram rotulados para treinamento do modelo de IA.
+   - Foi utilizado um dataset de imagens contendo os números das células da grade do Sudoku, onde essas imagens das células com e sem números(0) foram rotulados para treinamento do modelo de IA.
 
 3. **Construção e Ajuste do Modelo**:
    - O modelo foi desenvolvido utilizando a arquitetura **Convolutional Neural Network (CNN)**, com camadas de convolução, pooling, e camadas densas para a classificação dos números.
 
 4. **Teste e Validação**:
-   - O modelo foi validado utilizando imagens do Sudoku que não foram usadas no treinamento. A precisão foi monitorada ao longo do processo de treinamento, e o modelo foi ajustado conforme necessário.
+   - Durante o treinamento, a precisão foi monitorada continuamente, e ajustes foram feitos conforme necessário para aprimorar a performance do modelo.
 
 5. **Reajuste e Fine-Tuning**:
-   - O modelo passou por ajustes de hiperparâmetros e modificações na arquitetura para melhorar sua precisão na detecção e resolução dos números no Sudoku.
+   - O modelo passou por um processo de fine-tuning, onde hiperparâmetros foram ajustados e a arquitetura foi refinada para otimizar a aprendizagem dos números. Isso permitiu que o modelo identificasse os números de forma mais eficiente e precisa, melhorando seu       
+     desempenho na resolução do Sudoku.
 
 ## 📋 Requisitos Técnicos
 
 - **Bibliotecas**:
   - TensorFlow
+  - Responsabilidade: O TensorFlow é uma biblioteca de aprendizado de máquina usada para criar, treinar e testar modelos de IA. No código, ele é utilizado para construir e treinar a rede neural convolucional (CNN) que faz o reconhecimento dos números nas células do         Sudoku. O TensorFlow gerencia a criação do modelo, o fluxo de dados, o cálculo de gradientes e a otimização dos pesos durante o treinamento.
+
   - Keras
   - OpenCV
   - NumPy
