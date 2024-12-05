@@ -4,6 +4,10 @@
 
 Este projeto visa a construção de uma Inteligência Artificial (IA) do zero, com a aplicação de técnicas de redes neurais para resolver o jogo de Sudoku a partir de imagens. A IA foi desenvolvida com o uso da biblioteca TensorFlow e Keras, e o modelo treinado utiliza uma arquitetura de rede neural convolucional (CNN) para classificar os números nas células de uma grade de Sudoku.
 
+## 🤖 O que é uma CNN ?
+
+Uma Rede Neural Convolucional (ConvNet / Convolutional Neural Network / CNN) é um algoritmo de Aprendizado Profundo que pode captar uma imagem de entrada, atribuir importância (pesos e vieses que podem ser aprendidos) a vários aspectos / objetos da imagem e ser capaz de diferenciar um do outro.
+
 ## 🎯 Objetivo do Trabalho
 
 O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso de redes neurais para a resolução de um problema clássico de raciocínio lógico: o Sudoku. A IA foi desenvolvida para ler imagens do jogo e identificar os números.
