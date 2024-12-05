@@ -105,12 +105,9 @@ O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso d
 
 ## 🎯 Resultados Esperados
 
-Ao executar o script, a IA deve ser capaz de detectar e resolver a grade de Sudoku presente em uma imagem, mostrando o resultado final diretamente sobre a imagem original.
+Ao executar o script, a IA deve ser capaz de identificar e classificar os números em cada célula da grade de Sudoku presente em uma imagem, para que assim o resultado do jogo seja calculado e mostrado diretamente sobre a imagem original.
 
 ## 📝 Conclusões
 
-Este projeto demonstra como é possível utilizar redes neurais convolucionais para resolver problemas lógicos simples, como o Sudoku. O processo de treinamento e ajuste do modelo foi desafiador, mas permitiu explorar a aplicação prática de IA na resolução de problemas do mundo real.
+Este projeto demonstra como é possível utilizar redes neurais convolucionais para resolver problemas lógicos simples, como o Sudoku. O processo de treinamento do modelo e as configurações para obter as imagens necessárias foram desafiadores, mas permitiram explorar a aplicação prática de IA na resolução de problemas do mundo real.
 
-## 📝 Licença
-
-Este projeto é licenciado sob a [Licença MIT](LICENSE).
