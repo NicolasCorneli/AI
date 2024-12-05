@@ -32,14 +32,21 @@ O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso d
 
 ## 📋 Requisitos Técnicos
 
-- **Bibliotecas**:
-  - TensorFlow
-  - Responsabilidade: O TensorFlow é uma biblioteca de aprendizado de máquina usada para criar, treinar e testar modelos de IA. No código, ele é utilizado para construir e treinar a rede neural convolucional (CNN) que faz o reconhecimento dos números nas células do         Sudoku. O TensorFlow gerencia a criação do modelo, o fluxo de dados, o cálculo de gradientes e a otimização dos pesos durante o treinamento.
+- ### **Bibliotecas**:
+  - ### TensorFlow
+  - O TensorFlow é uma biblioteca de aprendizado de máquina usada para criar, treinar e testar modelos de IA. No código, ele é utilizado para construir e treinar a rede neural convolucional (CNN) que faz o reconhecimento dos números nas células do         Sudoku. O         TensorFlow gerencia a criação do modelo, o fluxo de dados, o cálculo de gradientes e a otimização dos pesos durante o treinamento.
 
-  - Keras
-  - OpenCV
-  - NumPy
-  - Imutils
+  - ### Keras
+  - O Keras é uma API de alto nível que facilita a construção e treinamento de modelos de aprendizado profundo, como redes neurais. Ele é usado em conjunto com o TensorFlow para criar e treinar a arquitetura da rede neural (CNN) que identifica os          números do        Sudoku. Embora o TensorFlow forneça a base para as operações de baixo nível, o Keras oferece uma interface simplificada para construir, compilar e treinar o modelo.
+
+  - ### OpenCV
+  - O OpenCV (Open Source Computer Vision Library) é uma biblioteca para processamento de imagens. No código, ela é utilizada para manipular e processar as imagens do Sudoku, como carregá-las, converter para escala de cinza, binarizar, detectar            contornos e       identificar as células da grade. O OpenCV facilita a extração de informações visuais da imagem antes de passar para a rede neural.
+    
+  - ### NumPy
+  - O NumPy é uma biblioteca fundamental para cálculos numéricos em Python, oferecendo suporte a arrays multidimensionais e funções matemáticas rápidas. No código, ele é usado para trabalhar com arrays de dados, como as matrizes que representam as         grades de         Sudoku. O NumPy também é essencial para realizar operações eficientes com dados numéricos, como matrizes e vetores, que são usados no treinamento da rede neural.
+
+  - ### Imutils
+  - O Imutils é uma biblioteca auxiliar para simplificar várias operações de processamento de imagens, como redimensionamento, rotação e transformação. No código, ele é utilizado para os contornos da grade que foram detectados.
 
 - **Ferramentas**:
   - Python 3.x
