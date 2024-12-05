@@ -60,8 +60,8 @@ O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso d
 1. **Instalação das Dependências**:
    - Clone o repositório:
      ```bash
-     git clone <URL_DO_REPOSITORIO>
-     cd <diretório_do_repositorio>
+     git clone https://github.com/NicolasCorneli/AI
+     cd AI
      ```
    - Instale as dependências:
      ```bash
