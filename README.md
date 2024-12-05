@@ -6,7 +6,7 @@ Este projeto visa a construção de uma Inteligência Artificial (IA) do zero, c
 
 ## 🎯 Objetivo do Trabalho
 
-O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso de redes neurais para a resolução de um problema clássico de raciocínio lógico: o Sudoku. A IA foi desenvolvida para ler imagens do jogo, identificar os números e resolver o puzzle de forma autônoma.
+O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso de redes neurais para a resolução de um problema clássico de raciocínio lógico: o Sudoku. A IA foi desenvolvida para ler imagens do jogo e identificar os números.
 
 ## 🛠️ Etapas do Desenvolvimento
 
