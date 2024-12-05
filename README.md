@@ -1,14 +1,14 @@
-# IA para Resolução de Sudoku
+# 🧩 IA para Resolução de Sudoku
 
-## Descrição do Projeto
+## 📜 Descrição do Projeto
 
 Este projeto visa a construção de uma Inteligência Artificial (IA) do zero, com a aplicação de técnicas de redes neurais para resolver o jogo de Sudoku a partir de imagens. A IA foi desenvolvida com o uso da biblioteca TensorFlow e Keras, e o modelo treinado utiliza uma arquitetura de rede neural convolucional (CNN) para classificar os números nas células de uma grade de Sudoku.
 
-## Objetivo do Trabalho
+## 🎯 Objetivo do Trabalho
 
 O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso de redes neurais para a resolução de um problema clássico de raciocínio lógico: o Sudoku. A IA foi desenvolvida para ler imagens do jogo, identificar os números e resolver o puzzle de forma autônoma.
 
-## Etapas do Desenvolvimento
+## 🛠️ Etapas do Desenvolvimento
 
 1. **Escolha do paradigma de IA**:
    - A abordagem escolhida foi o **Conexionismo**, com a utilização de redes neurais para o reconhecimento dos números no Sudoku e resolução do jogo.
@@ -25,7 +25,7 @@ O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso d
 5. **Reajuste e Fine-Tuning**:
    - O modelo passou por ajustes de hiperparâmetros e modificações na arquitetura para melhorar sua precisão na detecção e resolução dos números no Sudoku.
 
-## Requisitos Técnicos
+## 📋 Requisitos Técnicos
 
 - **Bibliotecas**:
   - TensorFlow
@@ -39,7 +39,7 @@ O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso d
   - TensorFlow e Keras para treinamento e construção do modelo de IA.
   - OpenCV para processamento de imagens.
 
-## Como Usar
+## ⚙️ Como Usar
 
 ### Passos para Rodar o Projeto
 
@@ -69,7 +69,7 @@ O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso d
 4. **Modelo Pré-Treinado**:
    - O modelo treinado será salvo como `modelo_sudoku.keras`. Caso já tenha um modelo, ele será carregado automaticamente.
 
-## Funções Principais
+## 🔧 Funções Principais
 
 1. **Carregar e Processar Imagens**:
    - O código usa a função `carregar_alterar_img` para carregar a imagem e convertê-la para escala de cinza e binarizá-la.
@@ -89,14 +89,14 @@ O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso d
 6. **Escrita do Resultado na Imagem**:
    - A função `escrever_resultado_imagem` escreve os números resolvidos de volta na imagem original.
 
-## Resultados Esperados
+## 🎯 Resultados Esperados
 
 Ao executar o script, a IA deve ser capaz de detectar e resolver a grade de Sudoku presente em uma imagem, mostrando o resultado final diretamente sobre a imagem original.
 
-## Conclusões
+## 📝 Conclusões
 
 Este projeto demonstra como é possível utilizar redes neurais convolucionais para resolver problemas lógicos simples, como o Sudoku. O processo de treinamento e ajuste do modelo foi desafiador, mas permitiu explorar a aplicação prática de IA na resolução de problemas do mundo real.
 
-## Licença
+## 📝 Licença
 
 Este projeto é licenciado sob a [Licença MIT](LICENSE).
