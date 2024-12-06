@@ -79,7 +79,7 @@ O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso d
   - O Imutils é uma biblioteca auxiliar para simplificar várias operações de processamento de imagens, como redimensionamento, rotação e transformação. No código, ele é utilizado para os contornos da grade que foram detectados.
 
 - ### **Ferramentas**:
-  - Python 3.x
+  - Python 3.12.2
   - TensorFlow e Keras para treinamento e construção do modelo de IA.
   - OpenCV para processamento de imagens.
 
