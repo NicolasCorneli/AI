@@ -21,7 +21,7 @@ O treinamento foi realizado utilizando um modelo de rede neural convolucional (C
 ### Métricas de Precisão
 Durante o treinamento, a precisão foi monitorada utilizando os dados de validação. O modelo foi ajustado utilizando técnicas de `early stopping` e `reduce_lr_on_plateau` para evitar overfitting e garantir que o modelo continuasse a aprender de forma eficiente.
 
-##  Análise Crítica dos Resultados
+## 🔎 Análise Crítica dos Resultados
 
 ### Dificuldades Encontradas
 Uma das maiores dificuldades enfrentadas durante o desenvolvimento foi lidar com o pré-processamento de imagens. Adaptar, redirecionar, e iterar pelas imagens do Sudoku de forma eficaz foi um desafio significativo. As imagens precisaram ser binarizadas e redimensionadas, e isso exigiu bastante experimentação para encontrar os melhores parâmetros.
