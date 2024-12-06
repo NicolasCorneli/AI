@@ -87,19 +87,19 @@ def treina_ia_carrega_ia():
             class_mode='sparse'
         )
 
-        # Definir a arquitetura do modelo
-        modelo = Sequential([
-            Conv2D(32, (3, 3), activation='relu', input_shape=(70, 70, 1)),
+        # define a arquitetura do modelo
+        modelo = Sequential([ # sequential é um tipo de modelo onde as camadas são empilhadas sequencialmente. ou seja, cada camada recebe a saída da camada anterior como entrada. maneira fácil de criar redes neurais
+            Conv2D(32, (3, 3), activation='relu', input_shape=(70, 70, 1)), #Conv2D: é uma camada convolucional 2D. Ajuda a detectar padrões locais (como bordas, texturas, etc.) em imagens. / 32: é o número de filtros (ou kernels). filtros são pequenos arrays que percorrem a imagem para extrair características.
+            MaxPooling2D((2, 2)), # (3, 3) do conv2d: O tamanho do filtro é 3x3, ou seja, ele examina uma área de 3x3 pixels da imagem de entrada. / activation='relu': a função de ativação relu (rectified linear unit) é aplicada, que transforma valores negativos em zero e mantém os valores positivos.
+            Conv2D(64, (3, 3), activation='relu'), # input_shape=(70, 70, 1): Define o tamanho da entrada da imagem. Nesse caso, é uma imagem de 70x70 pixels com 1 canal (imagens em escala de cinza).
+            MaxPooling2D((2, 2)), # MaxPooling2D: é uma camada de pooling (subamostragem). o pooling reduz a dimensionalidade da imagem ao pegar o valor máximo de uma região específica. isso ajuda a reduzir a complexidade e a controlar o overfitting. / (2, 2): o tamanho da janela de pooling é 2x2, ou seja, ele vai pegar a maior valor em cada bloco de 2x2 pixels da imagem.
+            Conv2D(128, (3, 3), activation='relu'), #128: aumento no número de filtros permite que a rede aprenda representações mais complexas da imagem.
             MaxPooling2D((2, 2)),
-            Conv2D(64, (3, 3), activation='relu'),
-            MaxPooling2D((2, 2)),
-            Conv2D(128, (3, 3), activation='relu'),
-            MaxPooling2D((2, 2)),
-            Flatten(),
-            Dense(128, activation='relu', kernel_regularizer=l2(0.01)),
-            Dense(128, activation='relu', kernel_regularizer=l2(0.01)),
-            Dense(10, activation='softmax')
-        ])
+            Flatten(), #essa camada "achata" a saída das camadas anteriores (que têm forma tridimensional) em um vetor unidimensional. ou seja, ele transforma a matriz resultante das camadas convolucionais e de pooling em um vetor de uma única linha que pode ser alimentado em uma rede neural densa.
+            Dense(128, activation='relu', kernel_regularizer=l2(0.01)), #dense: é uma camada densa totalmente conectada, onde todos os neurônios da camada anterior estão conectados a cada neurônio dessa camada. / 128: O número de neurônios na camada densa.
+            Dense(128, activation='relu', kernel_regularizer=l2(0.01)), #kernel_regularizer=l2(0.01): a regularização L2 é aplicada a essa camada, ajudando a evitar overfitting. a regularização L2 penaliza grandes valores de pesos, ajudando o modelo a não se ajustar excessivamente aos dados de treinamento.
+            Dense(10, activation='softmax') # Dense(10): A camada final, com 10 neurônios, geralmente usada para problemas de classificação com 10 classes (por exemplo, no caso estamos lidando com 10 dígitos, como 0-9 em reconhecimento de números).
+        ]) #activation='softmax': A função Softmax é aplicada, transformando as saídas em probabilidades, ou seja, a saída de cada neurônio será entre 0 e 1, e a soma de todas as saídas será 1.
 
         modelo.compile(
             optimizer=Adam(learning_rate=0.0001),
@@ -107,7 +107,7 @@ def treina_ia_carrega_ia():
             metrics=['accuracy']
         )
 
-        # Callbacks
+        # callbacks
         early_stopping = EarlyStopping(
             monitor='val_loss',
             patience=5,
@@ -120,7 +120,7 @@ def treina_ia_carrega_ia():
             min_lr=1e-6
         )
 
-        # Treinamento
+        # treinamento
         modelo.fit(
             train_data,
             epochs=50,
@@ -128,7 +128,7 @@ def treina_ia_carrega_ia():
             callbacks=[early_stopping, reduce_lr]
         )
 
-        # Salvar modelo treinado
+        # salva modelo treinado
         modelo.save("modelo_sudoku.keras")
         print("Modelo treinado e salvo com sucesso!")
 
@@ -140,40 +140,39 @@ def monta_sudoku(linhas_sudoku, modelo, img):
     
     for i, row in enumerate(linhas_sudoku):
         for j, c in enumerate(row): 
-            # Cria uma máscara para isolar a célula
+            # cria uma máscara para isolar a célula
             mask = np.zeros(img.shape, dtype=np.uint8)
             cv2.drawContours(mask, [c], -1, (255, 255, 255), -1)
             result = cv2.bitwise_and(img, mask)
             cv2.imshow('result', result)
             cv2.waitKey(600)
-            # Extrai a célula (bounding box do contorno)
+            # extrai a célula (bounding box do contorno)
             x, y, w, h = cv2.boundingRect(c)
             numero = result[y:y + h, x:x + w]
             
-            # Verifica se a imagem tem mais de 1 canal (BGR)
+            # verifica se a imagem tem mais de 1 canal (BGR)
             if len(numero.shape) == 3:  
-                numero = cv2.cvtColor(numero, cv2.COLOR_BGR2GRAY)  # Converte para escala de cinza
+                numero = cv2.cvtColor(numero, cv2.COLOR_BGR2GRAY)  # converte para escala de cinza
             
-            # Pré-processamento: Redimensionar para 70x70 e binarizar
+            # pré-processamento: redimensionar para 70x70 e binarizar
             numero = cv2.resize(numero, (70, 70), interpolation=cv2.INTER_AREA)
             numero = cv2.threshold(numero, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
-            #numero = 255 - numero  # Inverte para combinar com o padrão EMNIST
             
-            # Verifica se a célula está vazia (contando pixels pretos)
-            if np.sum(numero == 0) < 30:  # Se há poucos pixels pretos, considere vazio
+            # verifica se a célula está vazia (contando pixels pretos)
+            if np.sum(numero == 0) < 30:  # se há poucos pixels pretos, considere vazio
                 valor = 0
             else:
-                numero = numero.reshape(1, 70, 70, -1) / 255.0  # Normalizar entre 0 e 1
-                # Classifica o número utilizando o modelo treinado
+                numero = numero.reshape(1, 70, 70, -1) / 255.0  # normalizar entre 0 e 1
+                # classifica o número utilizando o modelo treinado
                 predicao = modelo.predict(numero)
                 valor = np.argmax(predicao)
-                # Verifica confiança da previsão
+                # verifica confiança da previsão
                 if predicao.max() < 0.7:
                     valor = 0
 
             sudoku_matriz[i][j] = valor
 
-            # Para depuração: mostra cada célula isolada e seu valor detectado
+            # mostra cada célula isolada e seu valor detectado
             print(f"Valor detectado na célula [{i}][{j}]: {valor}")
     
     return sudoku_matriz
@@ -190,49 +189,50 @@ def resolve_sudoku(matriz):
     for linha in range(9):
         for coluna in range(9):
             if matriz[linha][coluna] == 0:
-                for numero in range(1,10):
-                    if verifica_numero(matriz,linha,coluna,numero):
-                        matriz[linha][coluna] = numero
-                        if resolve_sudoku(matriz):
+                for numero in range(1,10): # itera sobre todos os números possíveis (1 a 9) para tentar preencher a célula.
+                    if verifica_numero(matriz,linha,coluna,numero): # verifica se o número atual pode ser colocado na célula, sem violar as regras do Sudoku.
+                        matriz[linha][coluna] = numero #se o número for válido, ele é temporariamente colocado na célula.
+                        if resolve_sudoku(matriz): #a função é chamada recursivamente para tentar resolver o restante do tabuleiro.
                             return True
-                        matriz[linha][coluna] = 0
-                return False
-    return True
+                        matriz[linha][coluna] = 0 # se a solução não for possível com o número atual, a célula é redefinida para 0 e o algoritmo tenta o próximo número.(backtracking)
+                return False #se nenhum número de 1 a 9 for válido, retorna false, indicando que o Sudoku não pode ser resolvido com a configuração atual.
+    return True #quando todas as células estão preenchidas corretamente, retorna true.
 
 def escrever_resultado_imagem(matriz,linhas_sudoku,img):
-    for i, linha in enumerate(linhas_sudoku):
-        for j, coluna in enumerate(linha):
-            x,y,w,h = cv2.boundingRect(coluna)
-            if matriz[i][j] != 0:
-                numero = str(matriz[i][j])
-                fonte = cv2.FONT_HERSHEY_SIMPLEX
-                fonte_tamanho = 0.8
-                grossura = 2
-                tamanho_numero = cv2.getTextSize(numero,fonte,fonte_tamanho,grossura)[0]
+    for i, linha in enumerate(linhas_sudoku): #percorre cada linha identificada na imagem, indexando com i
+        for j, coluna in enumerate(linha): #para cada célula da linha, obtém a posição da coluna correspondente e o índice j.
+            x,y,w,h = cv2.boundingRect(coluna) #usando o OpenCV, calcula as coordenadas (x, y) e o tamanho (largura w e altura h) da célula detectada.
+            if matriz[i][j] != 0: #apenas escreve na imagem os números preenchidos (ou seja, os diferentes de 0).
+                numero = str(matriz[i][j]) #converte o número da matriz em uma string para poder escrevê-lo na imagem.
+                fonte = cv2.FONT_HERSHEY_SIMPLEX 
+                fonte_tamanho = 0.8 
+                grossura = 2 
+                tamanho_numero = cv2.getTextSize(numero,fonte,fonte_tamanho,grossura)[0] #calcula o deslocamento necessário para centralizar o número dentro da célula com base no tamanho do texto e nas dimensões da célula.
                 numero_x = x + (w - tamanho_numero[0]) // 2
                 numero_y = y + (h + tamanho_numero[1]) // 2
-                cv2.putText(img,numero,(numero_x,numero_y), fonte, fonte_tamanho, (0,255,0), grossura)
+                cv2.putText(img,numero,(numero_x,numero_y), fonte, fonte_tamanho, (255,0,0), grossura) #escreve o número na posição centralizada, com a cor azul (255,0, 0) e a grossura definida.
 
 def main():
-    img_path = "D:\\downloads\\sudoku_ai\\s1.png"
+    #coloque o caminha para sua imagem aqui, ela tem que ser uma grade de sudoku 640x640.
+    img_path = "C:\\Users\\nicol\\OneDrive\\Desktop\\s5.png"
 
-    # Passo 1: Carregar e binarizar a imagem
+    # passo 1: carregar e binarizar a imagem
     img, img_binaria = carregar_alterar_img(img_path)
     cv2.imshow('Imagem Binarizada', img_binaria)
 
-    # Passo 2: Filtrar e corrigir linhas
+    # passo 2: filtrar e corrigir linhas
     img_binaria = detecta_contornos_arruma_linhas(img_binaria)
 
-    # Passo 3: Detectar linhas da grade
+    # passo 3: detectar linhas da grade
     linhas_sudoku = ordena_grade(img_binaria)
 
-    # Passo 4: Treinar ou carregar o modelo
+    # passo 4: treinar ou carregar o modelo
     modelo = treina_ia_carrega_ia()
 
-    # Passo 5: Construir matriz do Sudoku
+    # passo 5: construir matriz do Sudoku
     sudoku_matriz = monta_sudoku(linhas_sudoku, modelo, img)
 
-    # Passo 6: Resolver o jogo
+    # passo 6: resolver o jogo
     print("Matriz inicial detectada:")
     for linha in sudoku_matriz:
         print(linha)
@@ -244,7 +244,7 @@ def main():
     else:
         print("Não foi possível resolver o Sudoku.")
 
-    # Passo 7: Escrever o resultado na imagem
+    # passo 7: escrever o resultado na imagem
     escrever_resultado_imagem(sudoku_matriz, linhas_sudoku, img)
     cv2.imshow("SSS", img)
     cv2.waitKey(0)
