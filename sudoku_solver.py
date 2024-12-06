@@ -103,7 +103,7 @@ def treina_ia_carrega_ia():
 
         modelo.compile(
             optimizer=Adam(learning_rate=0.0001),
-            loss='sparse_categorical_crossentropy',
+            loss='sparse_categorical_crossentropy', # sparse_categorical_crossentropy calcula a perda para problemas de classificação multiclasse. penaliza previsões incorretas, ajudando o modelo a ajustar os pesos para prever as classes corretamente.
             metrics=['accuracy']
         )
 
