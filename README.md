@@ -1,5 +1,35 @@
 # 🧩 IA para Resolução de Sudoku
 
+## ✨ Justificativa da Abordagem de IA Escolhida
+
+A escolha de uma rede neural conexionista foi motivada pela vontade de aprender e explorar o uso de redes neurais. A rede neural é ideal para essa tarefa porque pode aprender a partir de exemplos, ajustando-se aos padrões complexos presentes nas imagens dos números.
+
+## 🎲 Descrição e Origem do Dataset
+
+O dataset utilizado foi selecionado do site Kaggle e adaptado para o objetivo de identificar números digitais no Sudoku.
+
+## 🧠 Processos de Treinamento/Ajuste e Teste
+
+O treinamento foi realizado utilizando um modelo de rede neural convolucional (CNN) com três camadas convolucionais, camadas de pooling e camadas densas para classificar os números. O modelo foi compilado com o otimizador Adam, a função de perda `sparse_categorical_crossentropy` e a métrica de precisão (`accuracy`).
+
+### Parâmetros do Modelo
+- Camadas convolucionais: 32, 64 e 128 filtros, com tamanhos de kernel (3, 3).
+- Camadas de pooling: MaxPooling com tamanho (2, 2).
+- Camadas densas: 128 unidades, com regularização L2 (`kernel_regularizer=l2(0.01)`), para evitar overfitting.
+- Taxa de aprendizado: 0.0001.
+
+### Métricas de Precisão
+Durante o treinamento, a precisão foi monitorada utilizando os dados de validação. O modelo foi ajustado utilizando técnicas de `early stopping` e `reduce_lr_on_plateau` para evitar overfitting e garantir que o modelo continuasse a aprender de forma eficiente.
+
+##  Análise Crítica dos Resultados
+
+### Dificuldades Encontradas
+Uma das maiores dificuldades enfrentadas durante o desenvolvimento foi lidar com o pré-processamento de imagens. Adaptar, redirecionar, e iterar pelas imagens do Sudoku de forma eficaz foi um desafio significativo. As imagens precisaram ser binarizadas e redimensionadas, e isso exigiu bastante experimentação para encontrar os melhores parâmetros.
+
+### Fine-Tuning
+O fine-tuning do modelo foi particularmente desafiador, pois era necessário encontrar o equilíbrio entre a aprendizagem eficiente e a prevenção do overfitting. Para isso, foi ajustada a arquitetura da rede, bem como os hiperparâmetros, como a taxa de aprendizado e a regularização L2. A escolha de uma taxa de aprendizado baixa (0.0001) e a aplicação da regularização L2 ajudaram a garantir que o modelo não fosse excessivamente complexo e, assim, evitou-se que o modelo ficasse “desprovido de inteligência” ou apresentasse overfitting.
+
+
 ## 📜 Descrição do Projeto
 
 Este projeto visa a construção de uma Inteligência Artificial (IA) do zero, com a aplicação de técnicas de redes neurais para resolver o jogo de Sudoku a partir de imagens. A IA foi desenvolvida com o uso da biblioteca TensorFlow e Keras, e o modelo treinado utiliza uma arquitetura de rede neural convolucional (CNN) para classificar os números nas células de uma grade de Sudoku.
