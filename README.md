@@ -1,8 +1,38 @@
 # 🧩 IA para Resolução de Sudoku
 
+## 📜 Descrição do Projeto
+
+Este projeto visa a construção de uma Inteligência Artificial (IA) do zero, com a aplicação de técnicas de redes neurais para resolver o jogo de Sudoku a partir de imagens. A IA foi desenvolvida com o uso da biblioteca TensorFlow e Keras, e o modelo treinado utiliza uma arquitetura de rede neural convolucional (CNN) para classificar os números nas células de uma grade de Sudoku.
+
+## 🤖 O que é uma CNN ?
+
+Uma Rede Neural Convolucional (ConvNet / Convolutional Neural Network / CNN) é um algoritmo de Aprendizado Profundo que pode captar uma imagem de entrada, atribuir importância (pesos e vieses que podem ser aprendidos) a vários aspectos / objetos da imagem e ser capaz de diferenciar um do outro.
+
+## 🎯 Objetivo do Trabalho
+
+O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso de redes neurais para a resolução de um problema clássico de raciocínio lógico: o Sudoku. A IA foi desenvolvida para ler imagens do jogo e identificar os números.
+
 ## ✨ Justificativa da Abordagem de IA Escolhida
 
 A escolha de uma rede neural conexionista foi motivada pela vontade de aprender e explorar o uso de redes neurais. A rede neural é ideal para essa tarefa porque pode aprender a partir de exemplos, ajustando-se aos padrões complexos presentes nas imagens dos números.
+
+## 🛠️ Etapas do Desenvolvimento
+
+1. **Escolha do paradigma de IA**:
+   - A abordagem escolhida foi o **Conexionismo**, com a utilização de redes neurais para o reconhecimento dos números na grade do Sudoku.
+
+2. **Criação/seleção de Dataset**:
+   - Foi utilizado um dataset de imagens contendo os números das células da grade do Sudoku, onde essas imagens das células com e sem números(0) foram rotulados para treinamento do modelo de IA.
+
+3. **Construção e Ajuste do Modelo**:
+   - O modelo foi desenvolvido utilizando a arquitetura **Convolutional Neural Network (CNN)**, com camadas de convolução, pooling, e camadas densas para a classificação dos números.
+
+4. **Teste e Validação**:
+   - Foi feita a divisão do dataset para treinamento e teste para validar o modelo. Além disso, durante o treinamento, a precisão foi monitorada continuamente, e ajustes foram feitos conforme necessário para aprimorar a performance do modelo.
+
+5. **Reajuste e Fine-Tuning**:
+   - O modelo passou por um processo de fine-tuning, onde hiperparâmetros foram ajustados e a arquitetura foi refinada para otimizar a aprendizagem dos números. Isso permitiu que o modelo identificasse os números de forma mais eficiente e precisa, melhorando seu       
+     desempenho na resolução do Sudoku.
 
 ## 🎲 Descrição e Origem do Dataset
 
@@ -28,37 +58,6 @@ Uma das maiores dificuldades enfrentadas durante o desenvolvimento foi lidar com
 
 ### Fine-Tuning
 O fine-tuning do modelo foi particularmente desafiador, pois era necessário encontrar o equilíbrio entre a aprendizagem eficiente e a prevenção do overfitting. Para isso, foi ajustada a arquitetura da rede, bem como os hiperparâmetros, como a taxa de aprendizado e a regularização L2. A escolha de uma taxa de aprendizado baixa (0.0001) e a aplicação da regularização L2 ajudaram a garantir que o modelo não fosse excessivamente complexo e, assim, evitou-se que o modelo ficasse “desprovido de inteligência” ou apresentasse overfitting.
-
-
-## 📜 Descrição do Projeto
-
-Este projeto visa a construção de uma Inteligência Artificial (IA) do zero, com a aplicação de técnicas de redes neurais para resolver o jogo de Sudoku a partir de imagens. A IA foi desenvolvida com o uso da biblioteca TensorFlow e Keras, e o modelo treinado utiliza uma arquitetura de rede neural convolucional (CNN) para classificar os números nas células de uma grade de Sudoku.
-
-## 🤖 O que é uma CNN ?
-
-Uma Rede Neural Convolucional (ConvNet / Convolutional Neural Network / CNN) é um algoritmo de Aprendizado Profundo que pode captar uma imagem de entrada, atribuir importância (pesos e vieses que podem ser aprendidos) a vários aspectos / objetos da imagem e ser capaz de diferenciar um do outro.
-
-## 🎯 Objetivo do Trabalho
-
-O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso de redes neurais para a resolução de um problema clássico de raciocínio lógico: o Sudoku. A IA foi desenvolvida para ler imagens do jogo e identificar os números.
-
-## 🛠️ Etapas do Desenvolvimento
-
-1. **Escolha do paradigma de IA**:
-   - A abordagem escolhida foi o **Conexionismo**, com a utilização de redes neurais para o reconhecimento dos números na grade do Sudoku.
-
-2. **Criação/seleção de Dataset**:
-   - Foi utilizado um dataset de imagens contendo os números das células da grade do Sudoku, onde essas imagens das células com e sem números(0) foram rotulados para treinamento do modelo de IA.
-
-3. **Construção e Ajuste do Modelo**:
-   - O modelo foi desenvolvido utilizando a arquitetura **Convolutional Neural Network (CNN)**, com camadas de convolução, pooling, e camadas densas para a classificação dos números.
-
-4. **Teste e Validação**:
-   - Foi feita a divisão do dataset para treinamento e teste para validar o modelo. Além disso, durante o treinamento, a precisão foi monitorada continuamente, e ajustes foram feitos conforme necessário para aprimorar a performance do modelo.
-
-5. **Reajuste e Fine-Tuning**:
-   - O modelo passou por um processo de fine-tuning, onde hiperparâmetros foram ajustados e a arquitetura foi refinada para otimizar a aprendizagem dos números. Isso permitiu que o modelo identificasse os números de forma mais eficiente e precisa, melhorando seu       
-     desempenho na resolução do Sudoku.
 
 ## 📋 Requisitos Técnicos
 
