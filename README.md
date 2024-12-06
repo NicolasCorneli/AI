@@ -24,7 +24,7 @@ O objetivo deste trabalho é aplicar o conceito de **Conexionismo**, com o uso d
    - O modelo foi desenvolvido utilizando a arquitetura **Convolutional Neural Network (CNN)**, com camadas de convolução, pooling, e camadas densas para a classificação dos números.
 
 4. **Teste e Validação**:
-   - Durante o treinamento, a precisão foi monitorada continuamente, e ajustes foram feitos conforme necessário para aprimorar a performance do modelo.
+   - Foi feita a divisão do dataset para treinamento e teste para validar o modelo. Além disso, durante o treinamento, a precisão foi monitorada continuamente, e ajustes foram feitos conforme necessário para aprimorar a performance do modelo.
 
 5. **Reajuste e Fine-Tuning**:
    - O modelo passou por um processo de fine-tuning, onde hiperparâmetros foram ajustados e a arquitetura foi refinada para otimizar a aprendizagem dos números. Isso permitiu que o modelo identificasse os números de forma mais eficiente e precisa, melhorando seu       
